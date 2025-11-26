@@ -12,7 +12,7 @@
   <meta name="description" content="本文介绍了如何使用linux正则表达式结合命令处理文本和awk,grep,sed三种文本工作命令。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux正则表达式与三剑客">
-<meta property="og:url" content="https://666ahao.github.io/2023/1211/index.html">
+<meta property="og:url" content="https://aachou.github.io/2023/1211/index.html">
 <meta property="og:site_name" content="Chou&#39;s blog">
 <meta property="og:description" content="本文介绍了如何使用linux正则表达式结合命令处理文本和awk,grep,sed三种文本工作命令。">
 <meta property="og:locale" content="en_US">
@@ -207,7 +207,7 @@
 <p>a{2} 表示花括号前面的a连续出现两次。</p>
 <p>abc{2}表示abc中的c出现2次。</p>
 <p><strong>案例：从文本里面过滤出所有邮箱地址</strong></p>
-<p>root@localhost lianxi]# cat mail.txt<br>a  <a href="mailto:&#97;&#49;&#64;&#x71;&#x71;&#46;&#99;&#x6f;&#x6d;">a1@qq.com</a>  aa<br>b <a href="mailto:&#50;&#98;&#x40;&#115;&#x69;&#110;&#97;&#x2e;&#x63;&#111;&#109;">2b@sina.com</a> bb<br>c  <a href="mailto:&#99;&#51;&#64;&#49;&#54;&#51;&#46;&#x63;&#111;&#x6d;">c3@163.com</a> cc<br>d <a href="mailto:&#x34;&#100;&#x40;&#49;&#54;&#51;&#x2e;&#99;&#x6f;&#x6d;">4d@163.com</a> dd</p>
+<p>root@localhost lianxi]# cat mail.txt<br>a  <a href="mailto:&#97;&#49;&#64;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;">a1@qq.com</a>  aa<br>b <a href="mailto:&#x32;&#98;&#64;&#115;&#105;&#110;&#97;&#x2e;&#99;&#x6f;&#x6d;">2b@sina.com</a> bb<br>c  <a href="mailto:&#99;&#x33;&#x40;&#49;&#54;&#51;&#46;&#x63;&#111;&#x6d;">c3@163.com</a> cc<br>d <a href="mailto:&#52;&#x64;&#x40;&#x31;&#54;&#x33;&#46;&#99;&#111;&#109;">4d@163.com</a> dd</p>
 <p>写一个表示邮箱的正则，过滤邮箱。邮箱地址：字符串1@字符串2.字符串3</p>
 <p>字符串1：a-Z_0-9</p>
 <p>字符串2：0-Z</p>
