@@ -3,21 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>关于 | ZOU</title>
+  <title>访问Github失败处理 | ZOU</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   
   
   
-  <meta name="description" content="这是我的个人博客，感谢关注！This is my blog. Thank you for your attention!">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于">
-<meta property="og:url" content="https://goodzou.github.io/about/index.html">
+  <meta name="description" content="国内访问GitHub大多是 DNS 解析污染&#x2F;超时，优先用修改Hosts → 换公共 DNS → 镜像&#x2F;代理，基本都能解决。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="访问Github失败处理">
+<meta property="og:url" content="https://goodzou.github.io/2026/0505/index.html">
 <meta property="og:site_name" content="ZOU">
-<meta property="og:description" content="这是我的个人博客，感谢关注！This is my blog. Thank you for your attention!">
+<meta property="og:description" content="国内访问GitHub大多是 DNS 解析污染&#x2F;超时，优先用修改Hosts → 换公共 DNS → 镜像&#x2F;代理，基本都能解决。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-07-22T23:57:32.000Z">
-<meta property="article:modified_time" content="2026-04-13T06:22:36.336Z">
+<meta property="article:published_time" content="2026-05-05T04:54:05.000Z">
+<meta property="article:modified_time" content="2026-05-05T05:13:03.955Z">
 <meta property="article:author" content="zou">
 <meta property="article:tag" content="ZOU">
 <meta property="article:tag" content="blog">
@@ -55,7 +55,7 @@
 
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -103,7 +103,7 @@
             
       <div id="content" class="outer">
         
-          <section id="main"><article id="about-"  class="article article-type-about" itemscope itemprop="blogPost" >
+          <section id="main" style="float:none;"><article id="post-访问Github失败处理" style="width: 66%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
   <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
     
     
@@ -111,7 +111,7 @@
         
   
     <h1 class="thumb" class="article-title" itemprop="name">
-      关于
+      访问Github失败处理
     </h1>
   
 
@@ -119,7 +119,14 @@
     
     <div class="article-meta">
       
-       
+	<a href="/2026/0505/" class="article-date">
+	  <time datetime="2026-05-05T04:54:05.000Z" itemprop="datePublished">五月 5, 2026</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/other/">other</a>
+ 
       
 	<span id="busuanzi_container_page_pv">
 	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
@@ -128,12 +135,60 @@
     </div>
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这是我的个人博客，感谢关注！<br>This is my blog. Thank you for your attention!</p>
+        <p>国内访问GitHub大多是 DNS 解析污染&#x2F;超时，优先用修改Hosts → 换公共 DNS → 镜像&#x2F;代理，基本都能解决。 <span id="more"></span></p>
+<h4 id="快速排查"><a href="#快速排查" class="headerlink" title="快速排查"></a>快速排查</h4><ol>
+<li>查 GitHub 状态：<a target="_blank" rel="noopener" href="https://www.githubstatus.com(看官方是否宕机)./">https://www.githubstatus.com（看官方是否宕机）。</a> </li>
+<li>换浏览器&#x2F;无痕模式，关闭所有插件（尤其广告拦截、隐私类）。  </li>
+<li>重启路由器&#x2F;电脑，切换手机 4G&#x2F;5G 对比（判断是宽带问题还是全局问题）。</li>
+<li>临时关闭防火墙&#x2F;杀毒软件（测试是否被拦截）。</li>
+</ol>
+<h4 id="方法1：修改-Hosts"><a href="#方法1：修改-Hosts" class="headerlink" title="方法1：修改 Hosts"></a>方法1：修改 Hosts</h4><p>原理：直接绑定GitHub 最新IP，绕过DNS污染。 </p>
+<p>（1）获取最新 IP（任选其一）：    </p>
+<ul>
+<li>访问：<a target="_blank" rel="noopener" href="https://github.com.ipaddress.com/github.com">https://github.com.ipaddress.com/github.com</a>    </li>
+<li>访问：<a target="_blank" rel="noopener" href="https://ping.chinaz.com/github.com">https://ping.chinaz.com/github.com</a></li>
+<li>cmd 执行：<code>ping github.com</code>，抄下IP。</li>
+</ul>
+<p>（2）编辑 Hosts 文件：   </p>
+<ul>
+<li>Windows：管理员打开记事本 → 打开 <code>C:\Windows\System32\drivers\etc\hosts</code>。   </li>
+<li>MacOS&#x2F;Linux：终端输入 <code>sudo nano /etc/hosts</code>，输密码编辑。</li>
+</ul>
+<p>（3）文件末尾另起一行，添加：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">140</span>.<span class="number">82</span>.<span class="number">121</span>.<span class="number">4</span>  github.com    </span><br><span class="line"><span class="number">140</span>.<span class="number">82</span>.<span class="number">121</span>.<span class="number">5</span>  www.github.com </span><br></pre></td></tr></table></figure>
+
+<p>（4）生效：    </p>
+<ul>
+<li>Windows cmd：<code>ipconfig /flushdns</code>。 </li>
+<li>MacOS：<code>sudo killall -HUP mDNSResponder</code>。  </li>
+<li>Linux：<code>sudo systemd-resolve --flush-caches</code>。</li>
+</ul>
+<p>重新访问 github.com。 </p>
+<p>懒人工具：用 SwitchHosts 或 FastGithub，一键自动更新最优 Hosts，无需手动查 IP。</p>
+<h4 id="方法2：换公共-DNS"><a href="#方法2：换公共-DNS" class="headerlink" title="方法2：换公共 DNS"></a>方法2：换公共 DNS</h4><p>把 DNS 改成国内&#x2F;国际公共服务器： </p>
+<ul>
+<li>Windows：网络设置 → 更改适配器选项 → 右键 Wi-Fi&#x2F;以太网 → 属性 → IPv4 → 手动 DNS：</li>
+</ul>
+<p>首选：<code>114.114.114.114</code>（国内）    备选：<code>8.8.8.8</code>（Google）或 <code>1.1.1.1</code>（Cloudflare）。 </p>
+<ul>
+<li>MacOS：系统设置 → 网络 → 高级 → DNS，添加上述 IP。改完后刷新 DNS 缓存（同方法1第4步）。</li>
+</ul>
+<h4 id="方法3：镜像站-代理（临时应急）"><a href="#方法3：镜像站-代理（临时应急）" class="headerlink" title="方法3：镜像站&#x2F;代理（临时应急）"></a>方法3：镜像站&#x2F;代理（临时应急）</h4><p>国内镜像（仅浏览&#x2F;下载，不能登录&#x2F;提交代码）：    </p>
+<p><a target="_blank" rel="noopener" href="https://hub.fastgit.org/">https://hub.fastgit.org</a>   </p>
+<p><a target="_blank" rel="noopener" href="https://github.com.cnpmjs.org./">https://github.com.cnpmjs.org。</a></p>
+<p>Git 克隆加速（终端执行）：  </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://ghproxy.com/https://github.com/用户名/仓库名.git  </span><br></pre></td></tr></table></figure>
+
+<p>网页代理：访问 <a target="_blank" rel="noopener" href="https://ghproxy.com/%EF%BC%8C%E8%BE%93%E5%85%A5">https://ghproxy.com/，输入</a> GitHub 链接跳转。 </p>
+<h4 id="方法4：代理-VPN"><a href="#方法4：代理-VPN" class="headerlink" title="方法4：代理&#x2F;VPN"></a>方法4：代理&#x2F;VPN</h4><p>如果上述都无效，可使用合规的代理或 VPN，切换到海外节点后重试。 </p>
 
       
     </div>
     <footer class="entry-meta entry-footer">
       
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/other/">other</a>
+
       
       
     </footer>
@@ -141,155 +196,30 @@
   </div>
   
     
+<nav id="article-nav">
+  
+  
+    <a href="/2026/0504/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">信息安全</div>
+    </a>
+  
+</nav>
+
   
 </article>
 
 <!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E6%9F%A5"><span class="nav-number">1.</span> <span class="nav-text">快速排查</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%951%EF%BC%9A%E4%BF%AE%E6%94%B9-Hosts"><span class="nav-number">2.</span> <span class="nav-text">方法1：修改 Hosts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%952%EF%BC%9A%E6%8D%A2%E5%85%AC%E5%85%B1-DNS"><span class="nav-number">3.</span> <span class="nav-text">方法2：换公共 DNS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%953%EF%BC%9A%E9%95%9C%E5%83%8F%E7%AB%99-%E4%BB%A3%E7%90%86%EF%BC%88%E4%B8%B4%E6%97%B6%E5%BA%94%E6%80%A5%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">方法3：镜像站&#x2F;代理（临时应急）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%954%EF%BC%9A%E4%BB%A3%E7%90%86-VPN"><span class="nav-number">5.</span> <span class="nav-text">方法4：代理&#x2F;VPN</span></a></li></ol>
+    
+    </div>
+  </aside>
 </section>
-          <aside id="sidebar">
-  
-    <div style="margin: 20px 0;">
-	<div id="search-form-wrap">
-
-    <form class="search-form">
-        <label style="width: 72%;">
-            <span class="screen-reader-text">Search for:</span>
-            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" 搜索…" value="" name="s" title="Search for:">
-        </label>
-        <input type="submit" class="search-form-submit" value="搜索">
-    </form>
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: '文章',
-            PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
-            UNTITLED: '(无标题)',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-
-<script src="/js/insight.js"></script>
-
-
-</div>
-</div>
-  
-    
-  <div class="widget_athemes_tabs">
-    <ul id="widget-tab" class="clearfix widget-tab-nav">
-      <li class="active"><a>最新文章</a></li>
-    </ul>
-    <div class="widget">
-      <ul>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2026/0505/">访问Github失败处理</a></h6>
-              <span>五月 5, 2026</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2026/0504/">信息安全</a></h6>
-              <span>五月 4, 2026</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2026/0503/">计算机网络</a></h6>
-              <span>五月 3, 2026</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2026/0420/">linux文本编辑器</a></h6>
-              <span>四月 20, 2026</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2024/0130/">Redis</a></h6>
-              <span>一月 30, 2024</span>
-            </div>
-
-          </li>
-        
-          <li class="clearfix">
-
-            
-              <div class="widget-entry-summary" style="margin: 0;">
-            
-
-              <h6 style="margin: 0;"><a href="/2024/0118/">SpringBoot原理解析</a></h6>
-              <span>一月 18, 2024</span>
-            </div>
-
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/05/">五月 2026</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/04/">四月 2026</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/01/">一月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">十二月 2023</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">七月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/02/">二月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/11/">十一月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">1</span></li></ul>
-    </div>
-  </div>
-
-
-  
-</aside>
         
       </div>
 
